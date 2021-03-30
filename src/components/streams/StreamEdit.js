@@ -24,7 +24,12 @@ class StreamEdit extends Component {
       <div>
         <h3>Update a Stream</h3>
         <StreamForm
-          initialValues={this.props.stream}
+          initialValues={
+            this.props.stream && { 
+              title: this.props.stream.title,
+              description: this.props.stream.description,
+            }
+          }
           onsubmit={this.onSubmit}
         />
         {/* {this.props.stream && this.props.stream.title} */}
