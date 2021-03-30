@@ -56,6 +56,7 @@ export const updateStream = (id, updatedValues) => {
       type: actionTypes.UPDATE_STREAM,
       payload: data,
     });
+    history.push('/')
   };
 };
 
