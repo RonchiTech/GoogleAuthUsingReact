@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchStreams } from '../../store/actions';
-
+import { Link } from 'react-router-dom';
 class StreamList extends Component {
   componentDidMount() {
     this.props.onFetch();
   }
   renderAdmin = (stream) => {
-    if (stream.userId === this.props.currentUserId) {
+    if (this.props.currentUserId === stream.userId) {
       return (
         <div className="right floated content">
           <button className="ui button primary">Edit</button>
@@ -16,6 +16,7 @@ class StreamList extends Component {
       );
     }
   };
+
   renderList = () => {
     return this.props.streams.map((stream) => {
       return (
@@ -30,11 +31,25 @@ class StreamList extends Component {
       );
     });
   };
+
+  renderCreateStreamBtn = () => {
+    if (this.props.currentUserId) {
+      return (
+        <div style={{textAlign: 'right'}}>
+          <Link to="/streams/new" className="ui button primary">
+            Create Stream
+          </Link>
+        </div>
+      );
+    }
+  };
+
   render() {
     return (
       <div>
         <h2>Streams</h2>
         <div className="ui celled list">{this.renderList()}</div>
+        <div>{this.renderCreateStreamBtn()}</div>
       </div>
     );
   }

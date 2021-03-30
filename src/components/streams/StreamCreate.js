@@ -25,7 +25,7 @@ class StreamCreate extends Component {
     if (Object.keys(formValues).length === 0) {
       return;
     }
-    console.log(formValues);
+    // console.log(formValues);
     this.props.onCreateStream(formValues);
   };
   render() {

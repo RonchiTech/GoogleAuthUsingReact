@@ -1,5 +1,7 @@
 import * as actionTypes from './actionTypes';
 import streams from '../../apis/stream';
+import history from '../../history';
+
 export const signIn = (id) => {
   return {
     type: actionTypes.SIGN_IN,
@@ -12,20 +14,24 @@ export const signOut = () => {
 
 export const createStream = (formValues) => {
   return async (dispatch, getState) => {
-    console.log(getState());
+    // console.log(getState());
     const { userId } = getState().auth;
     const { data } = await streams.post('/streams', { ...formValues, userId });
     dispatch({
       type: actionTypes.CREATE_STREAM,
       payload: data,
     });
+    history.push('/');
   };
+
+  //Programmic Navigation
+  //Get user back to root route
 };
 
 export const fetchStreams = () => {
   return async (dispatch) => {
     const { data } = await streams.get('/streams');
-    console.log(data);
+    // console.log(data);
     dispatch({
       type: actionTypes.FETCH_STREAMS,
       payload: data,
