@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { fetchStream, updateStream } from '../../store/actions';
 import { connect } from 'react-redux';
 import StreamForm from './StreamForm';
+
 class StreamEdit extends Component {
   componentDidMount() {
     const {
@@ -19,13 +20,13 @@ class StreamEdit extends Component {
 
   render() {
     // console.log(this.props);
-    console.log(this.props);
+
     return (
       <div>
         <h3>Update a Stream</h3>
         <StreamForm
           initialValues={
-            this.props.stream && { 
+            this.props.stream && {
               title: this.props.stream.title,
               description: this.props.stream.description,
             }

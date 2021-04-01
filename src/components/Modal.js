@@ -12,9 +12,13 @@ const Modal = (props) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="header">{props.header}</div>
-        <div className="content">{props.content}</div>
+        <div className="content">
+          {props.streamInfo}
+        </div>
         <div className="actions">
-          <button className="ui negative button" onClick={props.onProceed}>{props.actionProceed}</button>
+          <button className="ui negative button" onClick={props.onProceed}>
+            {props.actionProceed}
+          </button>
           <button className="ui button" onClick={props.onDismissHandler}>
             {props.actionCancelled}
           </button>
