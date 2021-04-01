@@ -2,13 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const Modal = (props) => {
-  const onClickHandler = () => {
-    props.onclick();
-  };
   return ReactDOM.createPortal(
     <div
       className="ui dimmer modals visible active"
-      onClick={() => onClickHandler()}
+      onClick={props.onDismissHandler}
     >
       <div
         className="ui standard modal visible active"
@@ -17,8 +14,8 @@ const Modal = (props) => {
         <div className="header">{props.header}</div>
         <div className="content">{props.content}</div>
         <div className="actions">
-          <button className="ui primary button">{props.actionProceed}</button>
-          <button className="ui button" onClick={() => onClickHandler()}>
+          <button className="ui negative button" onClick={props.onProceed}>{props.actionProceed}</button>
+          <button className="ui button" onClick={props.onDismissHandler}>
             {props.actionCancelled}
           </button>
         </div>
